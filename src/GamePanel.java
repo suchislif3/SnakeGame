@@ -9,11 +9,11 @@ import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener {
 
-  static final int INFO_HEIGHT = 0;
+  static final int INFO_HEIGHT = 100;
   static final int GAME_HEIGHT = 600;
 
   static final int SCREEN_HEIGHT = INFO_HEIGHT + GAME_HEIGHT;
-  static final int SCREEN_WIDTH = 600;
+  static final int SCREEN_WIDTH = 900;
 
   static final int UNIT_SIZE = 25;
   static final int GAME_UNITS = (SCREEN_WIDTH * GAME_HEIGHT) / (UNIT_SIZE * UNIT_SIZE);
@@ -73,11 +73,13 @@ public class GamePanel extends JPanel implements ActionListener {
 
   public void draw(Graphics g) {
     //----- draw grid ------------------------------------------------------
+    // vertical lines
     g.setColor(GRID_COLOR);
-    for (int i = 0; i < GAME_HEIGHT / UNIT_SIZE; i++) {
+    for (int i = 0; i < SCREEN_WIDTH / UNIT_SIZE; i++) {
       g.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, GAME_HEIGHT);
     }
-    for (int i = 0; i < SCREEN_WIDTH / UNIT_SIZE; i++) {
+    // horizontal lines
+    for (int i = 0; i < GAME_HEIGHT / UNIT_SIZE; i++) {
       g.drawLine(0, i * UNIT_SIZE, SCREEN_WIDTH, i * UNIT_SIZE);
     }
     //----------------------------------------------------------------------
@@ -194,8 +196,6 @@ public class GamePanel extends JPanel implements ActionListener {
     // checks if head collides with body
     for (int i = bodyParts; i > 0; i--) {
       if((nextX[0] == nextX[i]) && (nextY[0] == nextY[i])) {
-        System.out.println("nextX[0]: " + nextX[0] + " = " + "nextX[" + i + "]: " + nextX[i]);
-        System.out.println("nextY[0]: " + nextY[0] + " = " + "nextY[" + i + "]: " + nextY[i]);
         running = false;
       }
     }
