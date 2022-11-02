@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener {
 
-  static final int INFO_HEIGHT = 100;
+  static final int INFO_HEIGHT = 0;
   static final int GAME_HEIGHT = 600;
 
   static final int SCREEN_HEIGHT = INFO_HEIGHT + GAME_HEIGHT;
@@ -131,6 +131,7 @@ public class GamePanel extends JPanel implements ActionListener {
       for (int i = 0; i < bodyParts + 1; i++) {
         if (newAppleX == x[i] && newAppleY == y[i]){
           isAppleUnderTheSnakesBody = true;
+          break;
         }
       }
     } while(isAppleUnderTheSnakesBody);
@@ -197,6 +198,7 @@ public class GamePanel extends JPanel implements ActionListener {
     for (int i = bodyParts; i > 0; i--) {
       if((nextX[0] == nextX[i]) && (nextY[0] == nextY[i])) {
         running = false;
+        break;
       }
     }
 
